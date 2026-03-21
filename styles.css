@@ -1,0 +1,528 @@
+/* Yuktha's Baby - Birthday Website */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Georgia', serif;
+    background: linear-gradient(135deg, #2c1810 0%, #1a0f08 100%);
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* Password Screen */
+.screen {
+    display: none;
+    min-height: 100vh;
+}
+
+.screen.active {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.password-container {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 50px;
+    border-radius: 0px;
+    text-align: center;
+    box-shadow: 0 10px 40px rgba(139, 90, 43, 0.3);
+    max-width: 400px;
+    width: 90%;
+}
+
+.password-container h1 {
+    color: #8b5a2b;
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.password-container p {
+    color: #a0826d;
+    margin-bottom: 20px;
+    font-size: 1.1rem;
+}
+
+.password-container input {
+    width: 100%;
+    padding: 15px;
+    font-size: 1.1rem;
+    border: 2px solid #d4a574;
+    border-radius: 0px;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.password-container button {
+    width: 100%;
+    padding: 15px;
+    font-size: 1.2rem;
+    background: #8b5a2b;
+    color: white;
+    border: none;
+    border-radius: 0px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.password-container button:hover {
+    background: #6b4423;
+    transform: scale(1.05);
+}
+
+.error {
+    color: #d32f2f;
+    margin-top: 10px;
+    font-size: 0.9rem;
+}
+
+/* Main Content */
+#mainContent {
+    display: none;
+    flex-direction: column;
+}
+
+#mainContent.active {
+    display: flex;
+}
+
+.section {
+    position:realtive;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 20px;
+    text-align: center;
+}
+
+/* Opening */
+.opening {
+    background: linear-gradient(135deg, #3d2817 0%, #2c1810 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.confetti {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(circle, #8b5a2b 2px, transparent 2px),
+        radial-gradient(circle, #d4a574 2px, transparent 2px);
+    background-size: 50px 50px;
+    background-position: 0 0, 25px 25px;
+    opacity: 0.3;
+    animation: float 20s infinite linear;
+}
+
+@keyframes float {
+    from { transform: translateY(0); }
+    to { transform: translateY(-100px); }
+}
+
+.main-title {
+    font-size: 4rem;
+    color: #fff;
+    text-shadow: 3px 3px 6px rgba(139, 90, 43, 0.5);
+    margin-bottom: 20px;
+    z-index: 1;
+    animation: fadeIn 1s;
+}
+
+.subtitle {
+    font-size: 1.5rem;
+    color: #fff;
+    margin-bottom: 40px;
+    z-index: 1;
+    animation: fadeIn 1.5s;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Sections */
+h2 {
+    font-size: 3rem;
+    color: #d4a574;
+    margin-bottom: 40px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Photos */
+.photo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    max-width: 900px;
+    width: 100%;
+    margin-bottom: 40px;
+}
+
+.photo {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 0px;
+    box-shadow: 0 5px 20px rgba(139, 90, 43, 0.3);
+    transition: transform 0.3s;
+}
+
+.photo:hover {
+    transform: scale(1.05) rotate(2deg);
+}
+
+.photo-single {
+    max-width: 600px;
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+.photo-large {
+    width: 100%;
+    height: auto;
+    border-radius: 0px;
+    box-shadow: 0 10px 30px rgba(139, 90, 43, 0.4);
+}
+
+/* Videos */
+.video-container {
+    max-width: 600px;
+    width: 100%;
+    margin: 30px 0;
+}
+
+.video {
+    width: 100%;
+    border-radius: 0px;
+    box-shadow: 0 5px 20px rgba(139, 90, 43, 0.3);
+}
+
+/* Text */
+.text-content {
+    max-width: 700px;
+    width: 100%;
+    margin: 30px 0;
+}
+
+.paragraph {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 30px;
+    border-radius: 0px;
+    margin-bottom: 20px;
+    color: #070200;
+    font-size: 1.2rem;
+    line-height: 1.8;
+    box-shadow: 0 5px 15px rgba(139, 90, 43, 0.2);
+    text-align: left;
+}
+
+.birthday-wish .paragraph {
+    text-align: center;
+    font-size: 1.3rem;
+}
+
+.final-message {
+    background: linear-gradient(135deg, rgba(217, 204, 191, 0.3), rgba(201, 168, 124, 0.3));
+    border: 2px solid #d4a574;
+}
+
+/* Button */
+.btn {
+    padding: 18px 40px;
+    font-size: 1.2rem;
+    background: #8b5a2b;
+    color: white;
+    border: none;
+    border-radius: 0px;
+    cursor: pointer;
+    margin-top: 30px;
+    transition: all 0.3s;
+    box-shadow: 0 5px 15px rgba(139, 90, 43, 0.3);
+}
+
+.btn:hover {
+    background: #6b4423;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(139, 90, 43, 0.4);
+}
+
+/* Guest Book */
+.guestbook-form {
+    max-width: 600px;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 40px;
+    border-radius: 0px;
+    box-shadow: 0 10px 30px rgba(139, 90, 43, 0.3);
+}
+
+.guestbook-form textarea {
+    width: 100%;
+    padding: 20px;
+    font-size: 1.1rem;
+    font-family: 'Georgia', serif;
+    border: 2px solid #d4a574;
+    border-radius: 0px;
+    resize: vertical;
+    margin-bottom: 20px;
+}
+
+.guestbook-form textarea:focus {
+    outline: none;
+    border-color: #8b5a2b;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .main-title {
+        font-size: 2.5rem;
+    }
+    
+    h2 {
+        font-size: 2rem;
+    }
+    
+    .subtitle {
+        font-size: 1.2rem;
+    }
+    
+    .photo-grid {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 15px;
+    }
+    
+    .paragraph {
+        font-size: 1rem;
+        padding: 20px;
+    }
+}
+/* Small Photo Grid */
+.photo-grid-small {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 15px;
+    max-width: 600px;
+    width: 100%;
+    margin: 30px auto;
+}
+
+.photo-small {
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 0px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s;
+}
+
+.photo-small:hover {
+    transform: scale(1.05);
+}
+.btn {
+    position: relative;
+    z-index: 9999 !important;
+    pointer-events: auto !important;
+}
+
+.section {
+    position: relative; /* MUST HAVE THIS! */
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 20px;
+    text-align: center;
+}
+/* ==================== STICKERS ==================== */
+
+/* Container */
+.stickers {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 1;
+    overflow: hidden;
+}
+
+/* Base sticker style */
+.sticker {
+    position: absolute;
+    object-fit: cover;
+    pointer-events: none;
+}
+
+/* HIS STICKERS - NO BORDER! */
+.sticker-his {
+    width: 110px;
+    height: 110px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+    border: none;
+}
+
+/* YOUR STICKERS - TAPE EFFECT */
+.sticker-mine {
+    width: 110px;
+    height: 110px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+    border: none;
+}
+
+.sticker-mine::before {
+    content: '';
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 55px;
+    height: 28px;
+    background: rgba(255, 228, 181, 0.7);
+    border: 1px solid rgba(139, 90, 43, 0.3);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+/* Opening section - DUPLICATED (8 his stickers) */
+.opening .s1 { top: 5%; left: 2%; transform: rotate(-12deg); }
+.opening .s2 { top: 8%; right: 3%; transform: rotate(15deg); }
+.opening .s3 { top: 50%; left: 1%; transform: rotate(8deg); }
+.opening .s4 { top: 52%; right: 2%; transform: rotate(-10deg); }
+.opening .s5 { bottom: 5%; left: 3%; transform: rotate(12deg); }
+.opening .s6 { bottom: 8%; right: 2%; transform: rotate(-15deg); }
+.opening .s7 { top: 30%; left: 4%; transform: rotate(18deg); }
+.opening .s8 { top: 70%; right: 5%; transform: rotate(-8deg); }
+
+/* Section 1 - DUPLICATED (8 his) */
+#section1 .s1 { top: 4%; left: 2%; transform: rotate(18deg); }
+#section1 .s2 { top: 6%; right: 3%; transform: rotate(-12deg); }
+#section1 .s3 { top: 48%; left: 1%; transform: rotate(-15deg); }
+#section1 .s4 { top: 52%; right: 2%; transform: rotate(14deg); }
+#section1 .s5 { bottom: 6%; left: 3%; transform: rotate(-10deg); }
+#section1 .s6 { bottom: 4%; right: 2%; transform: rotate(16deg); }
+#section1 .s7 { top: 28%; left: 3%; transform: rotate(12deg); }
+#section1 .s8 { top: 68%; right: 4%; transform: rotate(-18deg); }
+
+/* Section 2 - DUPLICATED (8 his) */
+#section2 .s1 { top: 6%; left: 3%; transform: rotate(-10deg); }
+#section2 .s2 { top: 5%; right: 2%; transform: rotate(20deg); }
+#section2 .s3 { top: 50%; left: 2%; transform: rotate(12deg); }
+#section2 .s4 { top: 48%; right: 1%; transform: rotate(-16deg); }
+#section2 .s5 { bottom: 8%; left: 2%; transform: rotate(14deg); }
+#section2 .s6 { bottom: 6%; right: 3%; transform: rotate(-12deg); }
+#section2 .s7 { top: 32%; left: 4%; transform: rotate(-8deg); }
+#section2 .s8 { top: 72%; right: 3%; transform: rotate(15deg); }
+
+/* Section 3 - DUPLICATED (8 his) */
+#section3 .s1 { top: 5%; left: 2%; transform: rotate(16deg); }
+#section3 .s2 { top: 7%; right: 3%; transform: rotate(-11deg); }
+#section3 .s3 { top: 52%; left: 1%; transform: rotate(-18deg); }
+#section3 .s4 { top: 50%; right: 2%; transform: rotate(15deg); }
+#section3 .s5 { bottom: 5%; left: 3%; transform: rotate(-14deg); }
+#section3 .s6 { bottom: 7%; right: 2%; transform: rotate(18deg); }
+#section3 .s7 { top: 30%; left: 3%; transform: rotate(10deg); }
+#section3 .s8 { top: 70%; right: 4%; transform: rotate(-12deg); }
+
+/* Section 4 - DUPLICATED (8 his) */
+#section4 .s1 { top: 6%; left: 3%; transform: rotate(-13deg); }
+#section4 .s2 { top: 5%; right: 2%; transform: rotate(17deg); }
+#section4 .s3 { top: 48%; left: 2%; transform: rotate(11deg); }
+#section4 .s4 { top: 51%; right: 1%; transform: rotate(-16deg); }
+#section4 .s5 { bottom: 6%; left: 2%; transform: rotate(15deg); }
+#section4 .s6 { bottom: 5%; right: 3%; transform: rotate(-10deg); }
+#section4 .s7 { top: 28%; left: 4%; transform: rotate(12deg); }
+#section4 .s8 { top: 72%; right: 3%; transform: rotate(-14deg); }
+
+/* Section 5 - 5 HIS + 5 MINE - BACKGROUND ONLY! */
+
+/* HIS STICKERS (edges/corners only) */
+#section5 .s1 { 
+    top: 5%; 
+    left: 3%; 
+    transform: rotate(-12deg); 
+}
+
+#section5 .s2 { 
+    top: 8%; 
+    right: 4%; 
+    transform: rotate(15deg); 
+}
+
+#section5 .s3 { 
+    top: 50%; 
+    left: 2%; 
+    transform: rotate(8deg); 
+}
+
+#section5 .s4 { 
+    top: 52%; 
+    right: 3%; 
+    transform: rotate(-10deg); 
+}
+
+#section5 .s5 { 
+    bottom: 5%; 
+    left: 4%; 
+    transform: rotate(12deg); 
+}
+
+/* YOUR STICKERS (edges/corners only) */
+#section5 .s6 { 
+    bottom: 8%; 
+    right: 3%; 
+    transform: rotate(-8deg); 
+}
+
+#section5 .s7 { 
+    top: 30%; 
+    left: 2%; 
+    transform: rotate(14deg); 
+}
+
+#section5 .s8 { 
+    top: 70%; 
+    right: 4%; 
+    transform: rotate(-12deg); 
+}
+
+#section5 .s9 { 
+    bottom: 30%; 
+    left: 3%; 
+    transform: rotate(10deg); 
+}
+
+#section5 .s10 { 
+    bottom: 35%; 
+    right: 2%; 
+    transform: rotate(-14deg); 
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+    .sticker-his {
+        width: 70px;
+        height: 70px;
+    }
+    
+    .sticker-mine {
+        width: 70px;
+        height: 70px;
+    }
+    
+    .sticker-mine::before {
+        width: 40px;
+        height: 20px;
+        top: -8px;
+    }
+}
